@@ -141,6 +141,7 @@ L_Data_ToEMI (uint8_t code, const LDataPtr & l1)
   if (!l1->repeated) {
     pdu[1] |= 0x20;  // 设置Bit 5 (重复标志)
   }
+  pdu[1] |= 0xb0;
   pdu[2] = 0;
   pdu[3] = 0;
   pdu[4] = (l1->destination_address >> 8) & 0xff;
