@@ -1,0 +1,25 @@
+{
+  "name": "knxd-dev",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash"
+			},
+			"extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.makefile-tools",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools-extension-pack"
+			]
+		}
+	},
+  "postCreateCommand": "/workspaces/knxd/.devcontainer/postCreateCommand.sh",
+  "runArgs": [
+    "--privileged",        // 允许访问 USB 等硬件
+    "--device=/dev",       // 允许 libusb 访问物理 USB（如 KNX USB 接口）
+    "--net=host"           // knxd 若使用网络端口则建议
+  ]
+}

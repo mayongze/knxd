@@ -134,14 +134,7 @@ L_Data_ToEMI (uint8_t code, const LDataPtr & l1)
   CArray pdu;
   pdu.resize (l1->lsdu.size() + 7);
   pdu[0] = code;
-  pdu[1] = l1->priority << 2;
-  if (l1->frame_format == 1) {  // 标准帧
-    pdu[1] |= 0x80;  // 设置Bit 7
-  }
-  if (!l1->repeated) {
-    pdu[1] |= 0x20;  // 设置Bit 5 (重复标志)
-  }
-  pdu[1] |= 0xb0;
+  pdu[1] = (l1->priority << 2) | 0xb0;
   pdu[2] = 0;
   pdu[3] = 0;
   pdu[4] = (l1->destination_address >> 8) & 0xff;

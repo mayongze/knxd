@@ -8,6 +8,7 @@
 *.pyc
 *.pyo
 *.deps/
+/bin
 Makefile.in
 Makefile
 .libs
@@ -24,7 +25,6 @@ Makefile
 /configure
 /confdefs.h
 /depcomp
-/doc
 /install-sh
 /libtool
 /libev/

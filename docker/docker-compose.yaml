@@ -1,0 +1,18 @@
+services:
+  knxd:
+    image: mayongze/knxd:latest
+    container_name: knxd
+    network_mode: host
+    devices:
+      - "/dev/bus/usb:/dev/bus/usb:rwm"
+    cap_add:
+      - SYS_MODULE
+      - SYS_RAWIO
+    environment:
+      - ADDRESS=6.0.99
+      - CLIENT_ADDRESS=6.0.100:10
+      - INTERFACE=usb
+      - USB_INTERFACE=0
+      - DEBUG_ERROR_LEVEL=debug
+      - FILTERS=single,log,pace,queue
+    restart: unless-stopped
